@@ -17,6 +17,10 @@ public class Board {
         return board[row][column].getPiece();
     }
 
+    public Piece getPiece(Position position) {
+        return board[position.getRow()][position.getColumn()].getPiece();
+    }
+
     public void setPiece(int row, int column, Piece piece) {
         board[row][column].setPiece(piece);
     }

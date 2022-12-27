@@ -21,6 +21,10 @@ public class Position {
         this.piece = piece;
     }
 
+    public void removePiece() {
+        this.piece = null;
+    }
+
     public int getColor() {
         return color;
     }
@@ -31,6 +35,10 @@ public class Position {
 
     public int getColumn() {
         return column;
+    }
+
+    public boolean isDiagonal(Position other) {
+        return Math.abs(row - other.getRow()) == Math.abs(column - other.getColumn());
     }
 
 

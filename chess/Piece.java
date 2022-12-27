@@ -15,4 +15,6 @@ public interface Piece {
     public void setCaptured(boolean captured);
 
     public boolean isLegalMove(Position newPosition, boolean isCapturing);
+
+    public void setPosition(Position newPosition);
 }
