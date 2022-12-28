@@ -18,10 +18,13 @@ public class pawnPiece extends Piece{
     }
 
     @Override
-    public void moveTo(Position newPosition){
+    public void moveTo(int row, int column){
+        Position newPosition = board.getPosition(row, column);
         if (isLegalMove(newPosition)){
+            this.position.removePiece();
             this.setPosition(newPosition);
-            if (isFirstMove){
+            newPosition.setPiece(this);
+            if (this.isFirstMove){
                 isFirstMove = false;
             }
         }

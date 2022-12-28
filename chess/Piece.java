@@ -30,9 +30,12 @@ public abstract class Piece {
         this.captured = captured;
     }
 
-    public void moveTo(Position newPosition){
+    public void moveTo(int row, int column){
+        Position newPosition = board.getPosition(row, column);
         if (isLegalMove(newPosition)){
+            this.position.removePiece();
             this.setPosition(newPosition);
+            newPosition.setPiece(this);
         }
         else{
             System.err.println("Illegal move");
