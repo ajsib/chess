@@ -1,61 +1,26 @@
 package chess;
 
-public class bishopPiece implements Piece{
-
-    private Position position;
-    private int color;
-    private boolean captured;
-    private Board board;
+public class bishopPiece extends Piece{
 
     public bishopPiece(Position position, int color, Board board){
-        this.position = position;
-        this.color = color;
-        this.captured = false;
-        this.board = board;
+        super(position, color, board);
     }
 
     @Override
     public boolean isLegalMove(Position newPosition){
-        if (Position.isDiagonal(this.getPosition(), newPosition) && board.getPiece(newPosition) == null && !isCaptured()){
+        if (Board.isDiagonal(this.getPosition(), newPosition) && 
+            Board.diagonalIsClear(this.position, newPosition, board) && !isCaptured()){
             return true;
         }
+        return false;
     }
 
     @Override
-    public void moveTo(Position newPosition){
-        if (isLegalMove(newPosition)){
-            this.setPosition(newPosition);
+    public String toString(){
+        if (this.color == 0){
+            return "\u2657";
         }
-    }
-
-    @Override
-    public Position getPosition(){
-
-    }
-
-    @Override
-    public int getColor(){
-
-    }
-
-    @Override
-    public boolean isCaptured(){
-
-    }
-
-    @Override
-    public void setCaptured(boolean captured){
-
-    }
-
-    @Override
-    public boolean isLegalMove(Position newPosition, boolean isCapturing){
-
-    }
-
-    @Override
-    public void setPosition(Position newPosition){
-
+        return "\u265D";
     }
 
 }

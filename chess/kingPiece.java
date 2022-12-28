@@ -1,39 +1,24 @@
 package chess;
 
-public class kingPiece implements Piece{
+public class kingPiece extends Piece{
+
+    public kingPiece(Position position, int color, Board board){
+        super(position, color, board);
+    }
 
     @Override
     public boolean isLegalMove(Position newPosition){
-
+        if (Board.isAdjacent(this.getPosition(), newPosition) && !isCaptured()){
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void moveTo(Position newPosition){
-
-    }
-
-    @Override
-    public Position getPosition(){
-
-    }
-
-    @Override
-    public int getColor(){
-
-    }
-
-    @Override
-    public boolean isCaptured(){
-
-    }
-
-    @Override
-    public void setCaptured(boolean captured){
-
-    }
-
-    @Override
-    public boolean isLegalMove(Position newPosition, boolean isCapturing){
-        
+    public String toString(){
+        if (this.color == 0){
+            return "\u2654";
+        }
+        return "\u265A";
     }
 }

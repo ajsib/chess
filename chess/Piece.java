@@ -1,20 +1,51 @@
 package chess;
 
-public interface Piece {
+public abstract class Piece {
 
-    public boolean isLegalMove(Position newPosition);
+    protected Position position;
+    protected int color;
+    protected boolean captured;
+    protected Board board;
 
-    public void moveTo(Position newPosition);
+    public Piece(Position position, int color, Board board){
+        this.position = position;
+        this.color = color;
+        this.captured = false;
+        this.board = board;
+    }
 
-    public Position getPosition();
+    public Position getPosition(){
+        return this.position;
+    }
 
-    public int getColor();
+    public int getColor(){
+        return this.color;
+    }
 
-    public boolean isCaptured();
+    public boolean isCaptured(){
+        return this.captured;
+    }
 
-    public void setCaptured(boolean captured);
+    public void setCaptured(boolean captured){
+        this.captured = captured;
+    }
 
-    public boolean isLegalMove(Position newPosition, boolean isCapturing);
+    public void moveTo(Position newPosition){
+        if (isLegalMove(newPosition)){
+            this.setPosition(newPosition);
+        }
+        else{
+            System.err.println("Illegal move");
+        }
+    }
 
-    public void setPosition(Position newPosition);
+    public abstract boolean isLegalMove(Position newPosition);
+
+    public void setPosition(Position newPosition){
+        if (newPosition.getPiece() != null){
+            newPosition.getPiece().setCaptured(true);
+            board.setCapturedSquare(newPosition.getPiece());
+        }
+        this.position = newPosition;
+    }
 }

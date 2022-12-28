@@ -37,10 +37,9 @@ public class Position {
         return column;
     }
 
-    public boolean isDiagonal(Position other) {
-        return Math.abs(row - other.getRow()) == Math.abs(column - other.getColumn());
+    public boolean isClear() {
+        return piece == null;
     }
-
 
     @Override
     public boolean equals(Object other) {
