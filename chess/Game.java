@@ -18,7 +18,7 @@ public class Game extends Board {
         Piece blackhorse1 = board.getPiece(0, 1);
 
         blackhorse1.moveTo(2, 2);
-        blackhorse1.moveTo(4, 3);
+        blackhorse1.moveTo(4, 4);
 
         
         blackPawn1.moveTo(3, 0);
